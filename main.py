@@ -115,11 +115,11 @@ def create_answer(transaction_id, questions, name, domain_name, type_, class_):
 
     # add flags
     if is_valid:
-        answer += struct.pack('!HHHHH', 0x8180, questions, 1, 0, 0)
+        answer += struct.pack('!HHHHH', 0x8400, questions, 1, 0, 0)
     elif ipv4_address is None:
-        answer += struct.pack('!HHHHH', 0x0003, questions, 0, 0, 0)
+        answer += struct.pack('!HHHHH', 0x8403, questions, 0, 0, 0)
     else:
-        answer += struct.pack('!HHHHH', 0x0004, questions, 0, 0, 0)
+        answer += struct.pack('!HHHHH', 0x8404, questions, 0, 0, 0)
 
     # add requested domain name
     answer += name
